@@ -13,7 +13,8 @@
   "dependencies": {
     "cross-env": "^10.0.0",
     "express": "^5.1.0",
-    "http-errors": "^2.0.0"
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
