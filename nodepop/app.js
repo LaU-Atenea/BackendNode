@@ -5,6 +5,10 @@ import * as homeController from './controllers/homeController.js'
 
 const app = express()
 
+// view engine setup
+app.set('views', 'views')
+app.set('view engine', 'ejs')
+
 app.use(logger('dev'))
 
 app.get('/', homeController.index)
