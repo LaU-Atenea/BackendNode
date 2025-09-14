@@ -1,3 +1,4 @@
+import path from 'node:path'
 import express from 'express'
 import createError from 'http-errors'
 import logger from 'morgan'
@@ -12,6 +13,11 @@ app.set('view engine', 'ejs')
 app.locals.appName = 'NodePop'
 
 app.use(logger('dev'))
+app.use(express.static(path.join(import.meta.dirname, 'public')))
+
+/**
+ * Application routes
+ */
 
 app.get('/', homeController.index)
 
