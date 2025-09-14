@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= appName %></title>
-</head>
-<body>
-    <%= appName %>
-</body>
-</html>
+<%- include('header.ejs') %>
+    <h2>Bucles</h2>
+    <% users.forEach(user => { %>
+        <p><%= user.name %> cuesta <%= user.precio %>. Su propietario es <%= user.propietario %>. Esta es su imagen: <%= user.imagen %>, y estos sus tags <%= user.tags %> </p>
+
+    <% }) %>
+
+<%- include('footer.ejs') %>

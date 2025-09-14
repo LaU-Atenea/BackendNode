@@ -9,6 +9,8 @@ const app = express()
 app.set('views', 'views')
 app.set('view engine', 'ejs')
 
+app.locals.appName = 'NodePop'
+
 app.use(logger('dev'))
 
 app.get('/', homeController.index)
@@ -21,7 +23,11 @@ app.use((req, res, next) => {
 //error handler
 app.use((err, req, res, next) => {
     res.status(err.status || 500)
-    res.send('Ocurrió un error: ' + err.message)
+    // set locals, including error information in development
+    res.locals.message = err.message
+    res.locals.error = process.env.NODEAPP_ENV === 'development' ? err : {}
+
+    res.render('error')
 })
 
 export default app 
