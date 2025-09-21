@@ -1,7 +1,7 @@
 <%- include('header.ejs') %>
     <h2>Bucles</h2>
-    <% users.forEach(user => { %>
-        <p><%= user.name %> cuesta <%= user.precio %>. Su propietario es <%= user.propietario %>. Esta es su imagen: <%= user.imagen %>, y estos sus tags <%= user.tags %> </p>
+    <% anuncios.forEach(anuncio => { %>
+        <p><%= anuncio.name %> cuesta <%= anuncio.precio %>. Su propietario es <%= anuncio.propietario %>. Esta es su imagen: <%= anuncio.imagen %>, y estos sus tags <%= anuncio.tags %> </p>
 
     <% }) %>
 

@@ -1,15 +1,21 @@
-export function index (req, res, next) {
+import { query, validationResult } from 'express-validator'
+import Anuncio from '../models/Anuncios.js'
 
-    res.locals.users = [
-        { name: 'Moto Scooter 125cc', precio: 2300, 
-            propietario: 'admin', imagen: 'moto', tags: [ 'lifestyle', 'motor']  },
-        { name: 'iPhone 15', precio: 500, 
-            propietario: 'admin', imagen: 'iPhone', tags: [ 'lifestyle', 'mobile'] },
-        { name: 'Sudadera mujer', precio: 35, 
-            propietario: 'user1', imagen: 'sudadera', tags: [ 'lifestyle'] },
-        { name: 'Portatil HP gris', precio: 200, 
-            propietario: 'admin', imagen: 'moto', tags: [ 'lifestyle', 'work'] }
-    ]
 
-    res.render('home')
+export async function index (req, res, next) {
+    try {
+         res.locals.anuncios = await Anuncio.find()
+         res.render('home')
+        
+    } catch (error) {
+        next(error)
+    }
+
+   
+}
+
+// POST /post_with_body
+export function postWithBody(req, res, next) {
+     const { age, color } = req.body
+     res.send('ok')
 }

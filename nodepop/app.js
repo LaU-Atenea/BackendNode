@@ -3,6 +3,10 @@ import express from 'express'
 import createError from 'http-errors'
 import logger from 'morgan'
 import * as homeController from './controllers/homeController.js'
+import connectMongoose from './lib/connectMongoose.js'
+
+await connectMongoose()
+console.log('Connected to MongoDB.')
 
 const app = express()
 
@@ -13,6 +17,7 @@ app.set('view engine', 'ejs')
 app.locals.appName = 'NodePop'
 
 app.use(logger('dev'))
+app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(import.meta.dirname, 'public')))
 
 /**
@@ -20,6 +25,7 @@ app.use(express.static(path.join(import.meta.dirname, 'public')))
  */
 
 app.get('/', homeController.index)
+app.post('/post_with_body', homeController.postWithBody)
 
 //catch 404 and send error
 app.use((req, res, next) => {
