@@ -2,8 +2,10 @@ import path from 'node:path'
 import express from 'express'
 import createError from 'http-errors'
 import logger from 'morgan'
-import * as homeController from './controllers/homeController.js'
 import connectMongoose from './lib/connectMongoose.js'
+import * as homeController from './controllers/homeController.js'
+import * as loginController from './controllers/loginController.js'
+//import { log } from 'node:console'
 
 await connectMongoose()
 console.log('Connected to MongoDB.')
@@ -23,9 +25,9 @@ app.use(express.static(path.join(import.meta.dirname, 'public')))
 /**
  * Application routes
  */
-
 app.get('/', homeController.index)
-app.post('/post_with_body', homeController.postWithBody)
+app.get('/login', loginController.index)
+//app.post('/post_with_body', homeController.postWithBody)
 
 //catch 404 and send error
 app.use((req, res, next) => {
