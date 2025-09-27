@@ -27,6 +27,7 @@ app.use(express.static(path.join(import.meta.dirname, 'public')))
  */
 app.get('/', homeController.index)
 app.get('/login', loginController.index)
+app.post('/login', loginController.postLogin)
 //app.post('/post_with_body', homeController.postWithBody)
 
 //catch 404 and send error
